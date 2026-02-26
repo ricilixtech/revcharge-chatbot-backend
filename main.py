@@ -7,16 +7,28 @@ from google import genai
 from fastapi.middleware.cors import CORSMiddleware
 
 # =============================
-# LOAD ENV + GEMINI
+# LOAD ENV (Works locally + Railway)
 # =============================
 load_dotenv()
+
 api_key = os.getenv("GEMINI_API_KEY")
-
 if not api_key:
-    raise ValueError("GEMINI_API_KEY is not set in .env file or environment")
+    raise ValueError("GEMINI_API_KEY is not set")
 
-# Initialize Gemini client
 client = genai.Client(api_key=api_key)
+
+# =============================
+# CREATE FASTAPI APP
+# =============================
+app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # change to your frontend domain in production
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 # =============================
 # LOAD RULES
@@ -30,29 +42,41 @@ def load_rules():
 rules_text = load_rules()
 
 # =============================
-# LOAD FAQ + CREATE EMBEDDINGS
+# LOAD FAQ + CREATE EMBEDDINGS (SAFE VERSION)
 # =============================
 faq_chunks = []
 faq_embeddings = []
 
 def load_faq():
     global faq_chunks, faq_embeddings
-    
+
     if not os.path.exists("FAQ.txt"):
+        print("FAQ.txt not found")
         return
 
     with open("FAQ.txt", "r", encoding="utf-8") as f:
         content = f.read()
 
-    faq_chunks = [chunk.strip() for chunk in content.split("\n\n") if chunk.strip()]
+    faq_chunks = [
+        chunk.strip()
+        for chunk in content.split("\n\n")
+        if chunk.strip()
+    ]
+
+    faq_embeddings.clear()
 
     for chunk in faq_chunks:
-        embedding = client.models.embed_content(
-            model="gemini-embedding-001",
-            contents=chunk
-        )
-        faq_embeddings.append(np.array(embedding.embeddings[0].values))
+        try:
+            embedding = client.models.embed_content(
+                model="gemini-embedding-001",
+                contents=chunk
+            )
+            vector = np.array(embedding.embeddings[0].values)
+            faq_embeddings.append(vector)
+        except Exception as e:
+            print("Embedding error:", e)
 
+# Load once at startup
 load_faq()
 
 # =============================
@@ -62,63 +86,55 @@ def cosine_similarity(a, b):
     return np.dot(a, b) / (np.linalg.norm(a) * np.linalg.norm(b))
 
 # =============================
-# RETRIEVE TOP RELEVANT FAQ
+# RETRIEVE RELEVANT FAQ
 # =============================
 def retrieve_relevant_faq(question, top_k=2):
-    question_embedding = client.models.embed_content(
-        model="gemini-embedding-001",
-        contents=question
-    )
 
-    q_vector = np.array(question_embedding.embeddings[0].values)
+    if not faq_embeddings:
+        return ""
 
-    similarities = []
-    for i, faq_vector in enumerate(faq_embeddings):
-        score = cosine_similarity(q_vector, faq_vector)
-        similarities.append((score, faq_chunks[i]))
+    try:
+        question_embedding = client.models.embed_content(
+            model="gemini-embedding-001",
+            contents=question
+        )
+        q_vector = np.array(question_embedding.embeddings[0].values)
 
-    similarities.sort(reverse=True, key=lambda x: x[0])
-    return "\n\n".join([item[1] for item in similarities[:top_k]])
+        similarities = []
+        for i, faq_vector in enumerate(faq_embeddings):
+            score = cosine_similarity(q_vector, faq_vector)
+            similarities.append((score, faq_chunks[i]))
+
+        similarities.sort(reverse=True, key=lambda x: x[0])
+        return "\n\n".join([item[1] for item in similarities[:top_k]])
+
+    except Exception as e:
+        print("Retrieval error:", e)
+        return ""
 
 # =============================
-# MEMORY (Last 5 Exchanges)
+# SIMPLE MEMORY (Last 5 Exchanges)
 # =============================
-chat_memory = []  # list of {"customer": "...", "bot": "..."}
+chat_memory = []
 
 def update_memory(user_msg, bot_reply):
-    global chat_memory
-    
     chat_memory.append({
         "customer": user_msg,
         "bot": bot_reply
     })
 
-    # Keep only last 5 exchanges
     if len(chat_memory) > 5:
-        chat_memory = chat_memory[-5:]
+        del chat_memory[0]
 
 def get_memory_text():
-    conversation = ""
-    for item in chat_memory:
-        conversation += f"""
-Customer: {item['customer']}
-Bot: {item['bot']}
-"""
-    return conversation.strip()
+    return "\n".join(
+        f"Customer: {item['customer']}\nBot: {item['bot']}"
+        for item in chat_memory
+    )
 
 # =============================
-# CREATE FASTAPI APP
+# REQUEST MODEL
 # =============================
-app = FastAPI()
-
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["*"],
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
-
 class ChatRequest(BaseModel):
     message: str
 
@@ -150,14 +166,18 @@ Customer Question:
 {request.message}
 """
 
-    response = client.models.generate_content(
-        model="gemini-2.5-flash",
-        contents=prompt,
-    )
+    try:
+        response = client.models.generate_content(
+            model="gemini-2.5-flash",
+            contents=prompt,
+        )
 
-    bot_reply = response.text
+        bot_reply = response.text or "I will forward this to a human agent."
 
-    # Update memory
+    except Exception as e:
+        print("Generation error:", e)
+        bot_reply = "Service temporarily unavailable. Please try again."
+
     update_memory(request.message, bot_reply)
 
     return {"reply": bot_reply}
