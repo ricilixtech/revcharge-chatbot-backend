@@ -10,7 +10,7 @@ from fastapi.middleware.cors import CORSMiddleware
 # LOAD ENV + GEMINI
 # =============================
 load_dotenv()
-client = genai.Client(api_key=os.getenv("AIzaSyBcFZS17xfI31tG6p6S70jit6EAkH6_QBk"))
+client = genai.Client(api_key="AIzaSyBcFZS17xfI31tG6p6S70jit6EAkH6_QBk")
 
 # =============================
 # LOAD RULES
