@@ -10,7 +10,13 @@ from fastapi.middleware.cors import CORSMiddleware
 # LOAD ENV + GEMINI
 # =============================
 load_dotenv()
-client = genai.Client(api_key="AIzaSyBcFZS17xfI31tG6p6S70jit6EAkH6_QBk")
+api_key = os.getenv("GEMINI_API_KEY")
+
+if not api_key:
+    raise ValueError("GEMINI_API_KEY is not set in .env file or environment")
+
+# Initialize Gemini client
+client = genai.Client(api_key=api_key)
 
 # =============================
 # LOAD RULES
