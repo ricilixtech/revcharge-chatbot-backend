@@ -25,7 +25,7 @@ app = FastAPI()
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # change to your frontend domain in production
+    allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -55,7 +55,6 @@ def load_faq():
     global faq_chunks, faq_embeddings
 
     if not os.path.exists("FAQ.txt"):
-        print("FAQ.txt not found")
         return
 
     with open("FAQ.txt", "r", encoding="utf-8") as f:
@@ -65,94 +64,97 @@ def load_faq():
     faq_embeddings.clear()
 
     for chunk in faq_chunks:
-        try:
-            embedding = client.models.embed_content(
-                model="gemini-embedding-001",
-                contents=chunk
-            )
-            faq_embeddings.append(np.array(embedding.embeddings[0].values))
-        except Exception as e:
-            print("FAQ embedding error:", e)
+        embedding = client.models.embed_content(
+            model="gemini-embedding-001",
+            contents=chunk
+        )
+        faq_embeddings.append(np.array(embedding.embeddings[0].values))
+
 
 def load_inventory():
     global inventory_chunks, inventory_embeddings
 
     inventory_file = "inventory db chatbot - Sheet1.csv"
     if not os.path.exists(inventory_file):
-        print("Inventory CSV not found")
         return
 
     df = pd.read_csv(inventory_file)
 
-    # Create text chunks for each row
-    inventory_chunks[:] = []
-    for idx, row in df.iterrows():
-        chunk_text = " | ".join([f"{col}: {row[col]}" for col in df.columns])
-        inventory_chunks.append(chunk_text)
+    inventory_chunks[:] = [
+        " | ".join([f"{col}: {row[col]}" for col in df.columns])
+        for _, row in df.iterrows()
+    ]
 
     inventory_embeddings.clear()
-    for chunk in inventory_chunks:
-        try:
-            embedding = client.models.embed_content(
-                model="gemini-embedding-001",
-                contents=chunk
-            )
-            inventory_embeddings.append(np.array(embedding.embeddings[0].values))
-        except Exception as e:
-            print("Inventory embedding error:", e)
 
-# Load both at startup
+    for chunk in inventory_chunks:
+        embedding = client.models.embed_content(
+            model="gemini-embedding-001",
+            contents=chunk
+        )
+        inventory_embeddings.append(np.array(embedding.embeddings[0].values))
+
+
 load_faq()
 load_inventory()
 
 # =============================
-# HELPER: COSINE SIMILARITY
+# COSINE SIMILARITY
 # =============================
 def cosine_similarity(a, b):
     return np.dot(a, b) / (np.linalg.norm(a) * np.linalg.norm(b))
 
-# =============================
-# RETRIEVE RELEVANT CHUNKS (FAQ + Inventory)
-# =============================
 def retrieve_relevant_chunks(question, chunks, embeddings, top_k=2):
     if not embeddings:
         return ""
-    try:
-        question_embedding = client.models.embed_content(
-            model="gemini-embedding-001",
-            contents=question
-        )
-        q_vector = np.array(question_embedding.embeddings[0].values)
 
-        similarities = [(cosine_similarity(q_vector, e), c) for e, c in zip(embeddings, chunks)]
-        similarities.sort(reverse=True, key=lambda x: x[0])
-        return "\n\n".join([item[1] for item in similarities[:top_k]])
-    except Exception as e:
-        print("Retrieval error:", e)
-        return ""
+    question_embedding = client.models.embed_content(
+        model="gemini-embedding-001",
+        contents=question
+    )
+
+    q_vector = np.array(question_embedding.embeddings[0].values)
+
+    similarities = [(cosine_similarity(q_vector, e), c)
+                    for e, c in zip(embeddings, chunks)]
+
+    similarities.sort(reverse=True, key=lambda x: x[0])
+
+    return "\n\n".join([item[1] for item in similarities[:top_k]])
 
 def retrieve_relevant_faq(question):
-    return retrieve_relevant_chunks(question, faq_chunks, faq_embeddings, top_k=2)
+    return retrieve_relevant_chunks(question, faq_chunks, faq_embeddings)
 
 def retrieve_relevant_inventory(question):
-    return retrieve_relevant_chunks(question, inventory_chunks, inventory_embeddings, top_k=2)
+    return retrieve_relevant_chunks(question, inventory_chunks, inventory_embeddings)
 
 # =============================
-# SIMPLE MEMORY (Last 5 Exchanges)
+# SESSION-BASED MEMORY
 # =============================
-chat_memory = []
+chat_sessions = {}   # session_id -> list of messages
 
-def update_memory(user_msg, bot_reply):
-    chat_memory.append({
+def update_memory(session_id, user_msg, bot_reply):
+
+    if session_id not in chat_sessions:
+        chat_sessions[session_id] = []
+
+    chat_sessions[session_id].append({
         "customer": user_msg,
         "bot": bot_reply
     })
-    if len(chat_memory) > 5:
-        del chat_memory[0]
 
-def get_memory_text():
+    if len(chat_sessions[session_id]) > 5:
+        chat_sessions[session_id].pop(0)
+
+
+def get_memory_text(session_id):
+
+    if session_id not in chat_sessions:
+        return ""
+
     return "\n".join(
-        f"Customer: {item['customer']}\nBot: {item['bot']}" for item in chat_memory
+        f"Customer: {item['customer']}\nBot: {item['bot']}"
+        for item in chat_sessions[session_id]
     )
 
 # =============================
@@ -160,15 +162,19 @@ def get_memory_text():
 # =============================
 class ChatRequest(BaseModel):
     message: str
+    session_id: str   # <-- IMPORTANT
 
 # =============================
 # CHAT ENDPOINT
 # =============================
 @app.post("/chat")
 def chat(request: ChatRequest):
+
+    session_id = request.session_id
+
     relevant_faq = retrieve_relevant_faq(request.message)
     relevant_inventory = retrieve_relevant_inventory(request.message)
-    memory_context = get_memory_text()
+    memory_context = get_memory_text(session_id)
 
     prompt = f"""
 You are a professional customer support assistant.
@@ -197,10 +203,13 @@ Customer Question:
             model="gemini-2.5-flash",
             contents=prompt,
         )
+
         bot_reply = response.text or "I will forward this to a human agent."
+
     except Exception as e:
         print("Generation error:", e)
         bot_reply = "Service temporarily unavailable. Please try again."
 
-    update_memory(request.message, bot_reply)
+    update_memory(session_id, request.message, bot_reply)
+
     return {"reply": bot_reply}
