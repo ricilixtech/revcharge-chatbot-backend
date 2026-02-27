@@ -5,3 +5,5 @@ google-genai
 numpy
 pandas
 pydantic
+time
+json
