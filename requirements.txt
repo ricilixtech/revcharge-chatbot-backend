@@ -3,4 +3,5 @@ uvicorn
 python-dotenv
 google-genai
 numpy
+pandas
 pydantic
