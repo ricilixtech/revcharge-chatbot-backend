@@ -12,7 +12,7 @@ from fastapi.middleware.cors import CORSMiddleware
 # LOAD ENV (Works locally + Railway)
 # =============================
 load_dotenv()
-api_key = "AIzaSyBcO5ikJ_rR9HRLK1UOkBXxorjyQYEhyPU"
+api_key = os.getenv("GEMINI_API_KEY")
 
 if not api_key:
     raise ValueError("GEMINI_API_KEY is not set")
