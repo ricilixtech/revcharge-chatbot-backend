@@ -1,6 +1,24 @@
 Q: What is the name of your company?
 A: Revcharge
 
+Q: Is priced fixed?
+A: Yes prices are fixed.
+
+Q: Will this work with solar 
+A: Yes, We have seprate option for it.
+
+Q: Payment plan/installment ?
+A: AT this this payment is not in installation its one time payment
+
+Q: Can I pay after install? 
+A: No you need to pay before installation. After that our installation process will start
+
+Q: Will charger X work with Y solar inverter?
+A: In order to answere this queries will find both chargers from inverntry and then do cmpariosn and then show.
+
+Q: Will charger be sent to the installer? 
+A: No charger will be delivered to your location.
+
 Q: How many charging sessions per week will I need?
 A: It depends on your driving habits. Most EV owners charge 2–4 times per week, while daily commuters may prefer overnight charging for convenience.
 
