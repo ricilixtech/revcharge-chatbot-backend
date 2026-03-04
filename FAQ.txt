@@ -1,110 +1,242 @@
-Q: What is the name of your company?
-A: Revcharge
+🏢 COMPANY INFORMATION
+1. What is Revcharge?
 
-Q: Is priced fixed?
-A: Yes prices are fixed.
+Revcharge is an Australian company that supplies and professionally installs EV chargers for homes and businesses across Australia.
 
-Q: Will this work with solar 
-A: Yes, We have seprate option for it.
+2. Where does Revcharge operate?
 
-Q: Payment plan/installment ?
-A: AT this this payment is not in installation its one time payment
+Revcharge operates Australia-wide.
 
-Q: Can I pay after install? 
-A: No you need to pay before installation. After that our installation process will start
+3. How many customers has Revcharge served?
 
-Q: Will charger X work with Y solar inverter?
-A: In order to answere this queries will find both chargers from inverntry and then do cmpariosn and then show.
+Revcharge has served over 8,500 Australian customers.
 
-Q: Will charger be sent to the installer? 
-A: No charger will be delivered to your location.
+4. What services does Revcharge provide?
 
-Q: How many charging sessions per week will I need?
-A: It depends on your driving habits. Most EV owners charge 2–4 times per week, while daily commuters may prefer overnight charging for convenience.
+Revcharge supplies EV chargers, installs them via licensed electricians, offers solar integration options, and provides ongoing support.
 
-Q: How long does it take to fully charge an EV?
-A: Charging time depends on the charger type and vehicle battery size. A Level 2 home charger typically takes 4–8 hours for a full charge.
+5. How can I get a quote?
 
-Q: Do I need a special electrical setup at home?
-A: In most cases, a dedicated circuit is required. Our team evaluates your existing electrical panel and handles any necessary upgrades during installation.
+You can request a quote by completing the online survey. A fixed-price quote is provided within 1 business day.
 
-Q: Can I charge my EV without installing a wall charger?
-A: Yes, you can use a standard wall outlet, but charging will be much slower. A Level 2 charger is recommended for faster and more efficient charging.
+💰 PRICING & PAYMENT
+6. How much does a fully installed EV charger cost?
 
-Q: How much electricity does an EV charger use?
-A: Electricity usage depends on battery size and driving distance. On average, charging an EV costs significantly less than fueling a petrol or diesel vehicle.
+Fully installed EV charger packages start from $1,455.
 
-Q: Should I choose a smart charger or a basic charger?
-A: A smart charger offers features like app control, scheduling, energy monitoring, and load balancing. It’s ideal for optimizing electricity costs and convenience.
+7. How much does an EV charger cost without installation?
 
-Q: Is professional installation necessary?
-A: Yes. Professional installation ensures safety, compliance with local regulations, and proper electrical setup.
+EV chargers only (no installation) start from $720.
 
-Q: Is maintenance required for EV chargers?
-A: EV chargers require minimal maintenance. Regular inspections and keeping the unit clean are usually sufficient.
+8. Can I get installation only if I already have a charger?
 
-Q: How important is load management?
-A: Very important. Load management ensures your electrical system is not overloaded when charging, especially in homes with high power usage.
+Yes. Revcharge offers installation-only services if you supply your own charger.
 
-Q: Can I install an EV charger in an apartment?
-A: Yes, but it may require approval from property management or the building association. Our team can assist with the technical assessment and proposal.
+9. Is Revcharge pricing fixed?
 
-Q: Are government rebates available?
-A: In many regions, rebates and incentives are available for EV charger purchase and installation. We can guide you through eligibility and application steps.
+Yes. All pricing is fixed with no hidden or call-out fees.
 
-Q: What is the best location to install the charger?
-A: The ideal location is near your parking area with easy access to your vehicle’s charging port and close to your electrical panel.
+10. When do I need to pay?
 
-Q: How much does EV charger installation cost?
-A: Installation costs vary depending on wiring distance, panel upgrades, and site conditions. We provide a detailed quote after site inspection.
+Full payment is required before installation begins.
 
-Q: What if I move to a new home?
-A: Most EV chargers can be uninstalled and reinstalled at your new location by a licensed electrician.
+11. Can I pay after installation?
 
-Q: How do I choose the right EV charger?
-A: The right charger depends on your vehicle type, daily mileage, home electrical capacity, and budget. Our experts help you select the best option.
+No. Payment must be made upfront before installation.
 
-Q: What type of EV charger do I need for my car?
-A: Most modern EVs are compatible with Level 2 chargers, which are ideal for home use. We help you choose a charger that matches your vehicle’s charging capacity and connector type.
+12. Does Revcharge offer installment plans?
 
-Q: How fast is a Level 2 charger compared to a standard outlet?
-A: A Level 2 charger can charge up to 5–7 times faster than a standard household outlet, significantly reducing charging time.
+No. Only one-time upfront payment is available.
 
-Q: Is it safe to charge my EV overnight?
-A: Yes. Modern EV chargers include built-in safety protections such as temperature monitoring and automatic shutoff, making overnight charging safe.
+🔧 INSTALLATION PROCESS
+13. How does the Revcharge process work?
 
-Q: Will installing an EV charger increase my electricity bill?
-A: Your bill may increase slightly depending on usage, but EV charging is still much cheaper than traditional fuel. Smart chargers can also schedule charging during off-peak hours to reduce costs.
+The process includes:
 
-Q: Can I install the charger outdoors?
-A: Yes. Most EV chargers are weather-resistant and designed for outdoor installation. We ensure proper mounting and weatherproof setup.
+Online survey
 
-Q: How long does installation take?
-A: Standard installations usually take 2–4 hours. More complex installations may require additional time depending on electrical upgrades.
+Fixed-price quote within 1 business day
 
-Q: Do I need a permit for installation?
-A: In many areas, permits are required. Our team handles all necessary permits and ensures compliance with local regulations.
+Professional installation
 
-Q: What happens if there is a power outage?
-A: Charging will automatically stop during a power outage and safely resume once power is restored.
+Ongoing warranty and support
 
-Q: Can multiple EV chargers be installed at one location?
-A: Yes. We can install multiple chargers for homes with more than one EV or for commercial properties such as offices and parking lots.
+14. Who installs the chargers?
 
-Q: Is an EV charger compatible with solar panels?
-A: Yes. EV chargers can integrate with solar systems, allowing you to charge your vehicle using renewable energy.
+Licensed and certified local electricians from Revcharge’s Australia-wide network.
 
-Q: Do EV chargers come with a warranty?
-A: Yes. Most chargers come with manufacturer warranties ranging from 1 to 3 years. We also provide installation warranty coverage.
+15. How long does installation take?
 
-Q: What payment options do you offer?
-A: We offer flexible payment options, including upfront payment and installment plans depending on your location.
+Standard installations take 2–4 hours. Additional time may be required for electrical upgrades.
 
-Q: Can businesses install EV chargers for customers or employees?
-A: Yes. We provide commercial charging solutions for offices, retail spaces, hotels, and apartment complexes.
+16. Where is the charger delivered?
 
-Q: Will installing an EV charger increase my property value?
-A: Yes. EV charging infrastructure is increasingly seen as a valuable home and commercial property upgrade.
+The charger is delivered directly to your home, not to the installer.
 
-Q: What maintenance support do you provide after installation?
-A: We offer post-installation support, troubleshooting assistance, and optional maintenance plans for long-term reliability.
+17. Does Revcharge handle permits?
+
+Yes. Revcharge manages required permits and regulatory compliance.
+
+18. Can chargers be installed outdoors?
+
+Yes. Chargers are weatherproof and suitable for outdoor installation.
+
+19. Can EV chargers be installed in apartments?
+
+Yes. Body corporate or property management approval may be required. Revcharge assists with assessment.
+
+20. What is the best location for installation?
+
+Near your parking space, close to your vehicle’s charging port and your electrical panel.
+
+21. Can I take my charger if I move house?
+
+Yes. Most chargers can be professionally uninstalled and reinstalled at a new address.
+
+⚡ CHARGER TYPES & FEATURES
+22. What is the difference between tethered and untethered chargers?
+
+Tethered: Cable permanently attached.
+
+Untethered: Detachable cable for a cleaner appearance.
+
+23. What is the difference between smart and basic chargers?
+
+Smart chargers offer app control, scheduling, energy monitoring, solar integration, and load balancing.
+Basic chargers provide straightforward plug-in charging without app features.
+
+24. What is single-phase charging?
+
+Single-phase charging is standard in most Australian homes and adds approximately 30–40 km of range per hour.
+
+25. What is three-phase charging?
+
+Three-phase charging is faster and can add up to 120 km of range per hour. It requires a three-phase property connection.
+
+26. What is a Level 2 charger?
+
+Level 2 chargers are 5–7 times faster than a standard household power outlet and typically charge a vehicle fully in 4–8 hours.
+
+☀️ SOLAR & ENERGY INTEGRATION
+27. Can EV chargers work with solar panels?
+
+Yes. Revcharge offers dedicated solar integration options.
+
+28. Can chargers integrate with batteries and grid power?
+
+Yes. Chargers can integrate with solar panels, home batteries, and grid power.
+
+29. What is bidirectional charging?
+
+Bidirectional chargers allow:
+
+V2H (Vehicle-to-Home): Power your home from your car
+
+V2G (Vehicle-to-Grid): Sell power back to the grid
+
+30. How does Revcharge check charger compatibility with solar inverters?
+
+Revcharge checks both products in inventory, runs a compatibility comparison, and provides results to the customer.
+
+🔌 CHARGING & USAGE
+31. How fast is home charging compared to a standard power outlet?
+
+A standard outlet (~2.4kW) may take 24+ hours.
+A Level 2 single-phase charger (~7kW) takes around 4–8 hours.
+A Level 2 three-phase charger (~22kW) takes around 1–2 hours.
+
+32. How much does it cost to charge an EV at home?
+
+Typically $10–$20 per full charge, depending on electricity rates.
+
+33. How often do EV owners charge?
+
+Most EV owners charge 2–4 times per week. Daily commuters often charge overnight.
+
+34. Is overnight charging safe?
+
+Yes. Chargers include temperature monitoring and automatic shutoff for safety.
+
+35. What happens during a power outage?
+
+Charging stops safely and automatically resumes when power returns.
+
+36. Will charging overload my home?
+
+Smart chargers use load management to balance electricity usage and prevent overload.
+
+🛠 WARRANTY & SUPPORT
+37. What warranty is included?
+
+All chargers include a minimum 2-year manufacturer warranty plus an installation warranty.
+
+38. Does Revcharge provide support after installation?
+
+Yes. Ongoing troubleshooting support is available.
+
+39. Is maintenance required?
+
+Minimal maintenance is required. Routine inspections and keeping the unit clean are recommended.
+
+🏢 COMMERCIAL INSTALLATIONS
+40. Does Revcharge install multiple chargers at one location?
+
+Yes.
+
+41. What types of commercial properties are supported?
+
+Offices, retail shops, hotels, apartment buildings, and parking lots.
+
+42. Are dedicated commercial solutions available?
+
+Yes. Revcharge offers tailored commercial charging solutions.
+
+🎁 REBATES & PROPERTY VALUE
+43. Are government rebates available?
+
+Rebates and incentives are available in many Australian regions.
+
+44. Does Revcharge help with rebate applications?
+
+Yes. Revcharge guides customers through eligibility checks and rebate applications.
+
+45. Does installing an EV charger increase property value?
+
+Yes. EV chargers are increasingly considered a property value-add.
+
+🔗 IMPORTANT LINKS
+46. Where is the main website?
+
+https://www.revcharge.com.au
+
+47. Where can I get a standard quote?
+
+https://www.revcharge.com.au/get-a-quote
+
+48. Where can I get a solar or hybrid quote?
+
+https://hybridquote.revcharge.com.au
+
+49. Where can I view available chargers?
+
+https://www.revcharge.com.au/ev-chargers
+
+50. Where can I see pricing details?
+
+https://www.revcharge.com.au/pricing
+
+51. How can I contact Revcharge?
+
+https://www.revcharge.com.au/contact
+
+52. Where can I check car brand compatibility?
+
+https://www.revcharge.com.au/car-brands
+
+53. Where can I learn about bidirectional charging?
+
+https://www.revcharge.com.au/vehicle-to-grid
+
+54. How can electricians partner with Revcharge?
+
+https://www.revcharge.com.au/installer-partner-program
