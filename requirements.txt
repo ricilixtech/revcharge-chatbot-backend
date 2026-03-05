@@ -4,5 +4,9 @@ python-dotenv
 numpy
 pandas
 pydantic
-google-genai
 requests
+sentence-transformers
+torch
+transformers
+scikit-learn
+scipy
