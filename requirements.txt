@@ -1,11 +1,11 @@
-fastapi==0.95.2
-uvicorn==0.22.0
+fastapi==0.101.1            # Latest FastAPI that supports Pydantic 2.x
+uvicorn[standard]==0.23.2
 python-dotenv==1.2.2
 numpy==1.26.2
 pandas==3.0.1
 pydantic==2.12.5
 requests==2.32.5
-sentence-transformers==2.2.2  # or latest stable for Py3.13
-torch==2.10.0                  # compatible with Py3.13
+sentence-transformers==2.2.2
+torch==2.10.0
 scikit-learn==1.8.0
 scipy==1.17.1
