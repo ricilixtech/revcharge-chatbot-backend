@@ -1,7 +1,7 @@
-fastapi==0.101.1            # Latest FastAPI that supports Pydantic 2.x
+fastapi==0.101.1
 uvicorn[standard]==0.23.2
 python-dotenv==1.2.2
-numpy==1.26.2
+numpy==1.26.4
 pandas==3.0.1
 pydantic==2.12.5
 requests==2.32.5
