@@ -1,42 +1,28 @@
 import os
 import json
+import time
 import numpy as np
 import pandas as pd
-import requests
-
 from dotenv import load_dotenv
 from fastapi import FastAPI
 from pydantic import BaseModel
+from google import genai
 from fastapi.middleware.cors import CORSMiddleware
-from sentence_transformers import SentenceTransformer
 
 # =============================
 # LOAD ENV
 # =============================
 load_dotenv()
+API_KEY = os.getenv("GEMINI_API_KEY")
+if not API_KEY:
+    raise ValueError("GEMINI_API_KEY is not set")
 
-OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY")
-
-if not OPENROUTER_API_KEY:
-    raise ValueError("OPENROUTER_API_KEY is not set")
-
-OPENROUTER_URL = "https://openrouter.ai/api/v1/chat/completions"
-
-headers = {
-    "Authorization": f"Bearer {OPENROUTER_API_KEY}",
-    "Content-Type": "application/json",
-}
-
-# =============================
-# LOCAL EMBEDDING MODEL
-# =============================
-model = SentenceTransformer("all-MiniLM-L6-v2")
+client = genai.Client(api_key=API_KEY)
 
 # =============================
 # CREATE FASTAPI APP
 # =============================
 app = FastAPI()
-
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -57,7 +43,7 @@ def load_rules():
 rules_text = load_rules()
 
 # =============================
-# FILES
+# EMBEDDING CACHE FILES
 # =============================
 FAQ_EMBED_FILE = "faq_embeddings.json"
 INVENTORY_EMBED_FILE = "inventory_embeddings.json"
@@ -66,34 +52,39 @@ faq_chunks, faq_embeddings = [], []
 inventory_chunks, inventory_embeddings = [], []
 
 # =============================
-# EMBEDDING FUNCTION
+# EMBEDDING FUNCTION WITH RETRY
 # =============================
-def embed(text):
-    return model.encode(text)
+def embed_with_retry(text, model="gemini-embedding-001", retries=3, delay=5):
+    for attempt in range(retries):
+        try:
+            embedding = client.models.embed_content(model=model, contents=text)
+            return np.array(embedding.embeddings[0].values)
+        except Exception as e:
+            print(f"Embedding attempt {attempt+1} failed: {e}")
+            time.sleep(delay)
+    raise Exception("Failed to generate embedding after retries")
 
 # =============================
 # LOAD FAQ
 # =============================
 def load_faq():
     global faq_chunks, faq_embeddings
-
     if not os.path.exists("FAQ.txt"):
         return
 
     with open("FAQ.txt", "r", encoding="utf-8") as f:
         content = f.read()
 
-    faq_chunks[:] = [c.strip() for c in content.split("\n\n") if c.strip()]
+    faq_chunks[:] = [chunk.strip() for chunk in content.split("\n\n") if chunk.strip()]
 
     if os.path.exists(FAQ_EMBED_FILE):
-        with open(FAQ_EMBED_FILE) as f:
+        with open(FAQ_EMBED_FILE, "r") as f:
             faq_embeddings[:] = [np.array(e) for e in json.load(f)]
         return
 
     faq_embeddings.clear()
-
     for chunk in faq_chunks:
-        faq_embeddings.append(embed(chunk))
+        faq_embeddings.append(embed_with_retry(chunk))
 
     with open(FAQ_EMBED_FILE, "w") as f:
         json.dump([e.tolist() for e in faq_embeddings], f)
@@ -103,32 +94,31 @@ def load_faq():
 # =============================
 def load_inventory():
     global inventory_chunks, inventory_embeddings
-
     inventory_file = "inventory db chatbot - Sheet1.csv"
-
     if not os.path.exists(inventory_file):
         return
 
     df = pd.read_csv(inventory_file)
-
     inventory_chunks[:] = [
         " | ".join([f"{col}: {row[col]}" for col in df.columns])
         for _, row in df.iterrows()
     ]
 
     if os.path.exists(INVENTORY_EMBED_FILE):
-        with open(INVENTORY_EMBED_FILE) as f:
+        with open(INVENTORY_EMBED_FILE, "r") as f:
             inventory_embeddings[:] = [np.array(e) for e in json.load(f)]
         return
 
     inventory_embeddings.clear()
-
     for chunk in inventory_chunks:
-        inventory_embeddings.append(embed(chunk))
+        inventory_embeddings.append(embed_with_retry(chunk))
 
     with open(INVENTORY_EMBED_FILE, "w") as f:
         json.dump([e.tolist() for e in inventory_embeddings], f)
 
+# =============================
+# LOAD DATA
+# =============================
 load_faq()
 load_inventory()
 
@@ -138,25 +128,19 @@ load_inventory()
 def cosine_similarity(a, b):
     return np.dot(a, b) / (np.linalg.norm(a) * np.linalg.norm(b))
 
-def retrieve_chunks(question, chunks, embeddings, top_k=2):
-
+def retrieve_relevant_chunks(question, chunks, embeddings, top_k=2):
     if not embeddings:
         return ""
-
-    q_vector = embed(question)
-
-    sims = [(cosine_similarity(q_vector, e), c)
-            for e, c in zip(embeddings, chunks)]
-
-    sims.sort(reverse=True, key=lambda x: x[0])
-
-    return "\n\n".join([x[1] for x in sims[:top_k]])
+    q_vector = embed_with_retry(question)
+    similarities = [(cosine_similarity(q_vector, e), c) for e, c in zip(embeddings, chunks)]
+    similarities.sort(reverse=True, key=lambda x: x[0])
+    return "\n\n".join([item[1] for item in similarities[:top_k]])
 
 def retrieve_relevant_faq(question):
-    return retrieve_chunks(question, faq_chunks, faq_embeddings)
+    return retrieve_relevant_chunks(question, faq_chunks, faq_embeddings)
 
 def retrieve_relevant_inventory(question):
-    return retrieve_chunks(question, inventory_chunks, inventory_embeddings)
+    return retrieve_relevant_chunks(question, inventory_chunks, inventory_embeddings)
 
 # =============================
 # SESSION MEMORY
@@ -164,27 +148,16 @@ def retrieve_relevant_inventory(question):
 chat_sessions = {}
 
 def update_memory(session_id, user_msg, bot_reply):
-
     if session_id not in chat_sessions:
         chat_sessions[session_id] = []
-
-    chat_sessions[session_id].append({
-        "customer": user_msg,
-        "bot": bot_reply
-    })
-
+    chat_sessions[session_id].append({"customer": user_msg, "bot": bot_reply})
     if len(chat_sessions[session_id]) > 5:
         chat_sessions[session_id].pop(0)
 
-def get_memory(session_id):
-
+def get_memory_text(session_id):
     if session_id not in chat_sessions:
         return ""
-
-    return "\n".join(
-        f"Customer: {m['customer']}\nBot: {m['bot']}"
-        for m in chat_sessions[session_id]
-    )
+    return "\n".join(f"Customer: {item['customer']}\nBot: {item['bot']}" for item in chat_sessions[session_id])
 
 # =============================
 # REQUEST MODEL
@@ -197,11 +170,11 @@ class ChatRequest(BaseModel):
 # CHAT ENDPOINT
 # =============================
 @app.post("/chat")
-def chat(req: ChatRequest):
-
-    faq = retrieve_relevant_faq(req.message)
-    inventory = retrieve_relevant_inventory(req.message)
-    memory = get_memory(req.session_id)
+def chat(request: ChatRequest):
+    session_id = request.session_id
+    relevant_faq = retrieve_relevant_faq(request.message)
+    relevant_inventory = retrieve_relevant_inventory(request.message)
+    memory_context = get_memory_text(session_id)
 
     prompt = f"""
 You are a professional customer support assistant.
@@ -210,44 +183,30 @@ Follow these rules:
 {rules_text}
 
 Previous Conversation:
-{memory}
+{memory_context}
 
 Relevant FAQ:
-{faq}
+{relevant_faq}
 
-Relevant Inventory:
-{inventory}
+Relevant Inventory Information:
+{relevant_inventory}
 
-If answer is not found say:
+If answer is not found in the FAQ or Inventory, say:
 "I will forward this to a human agent."
 
 Customer Question:
-{req.message}
+{request.message}
 """
 
     try:
-
-        payload = {
-            "model": "arcee-ai/trinity-large-preview:free",
-            "messages": [
-                {"role": "user", "content": prompt}
-            ]
-        }
-
-        res = requests.post(
-            OPENROUTER_URL,
-            headers=headers,
-            json=payload
+        response = client.models.generate_content(
+            model="gemini-2.5-flash",
+            contents=prompt,
         )
-
-        data = res.json()
-
-        bot_reply = data["choices"][0]["message"]["content"]
-
+        bot_reply = response.text or "I will forward this to a human agent."
     except Exception as e:
-        print(e)
-        bot_reply = "Service temporarily unavailable."
+        print("Generation error:", e)
+        bot_reply = "Service temporarily unavailable. Please try again."
 
-    update_memory(req.session_id, req.message, bot_reply)
-
+    update_memory(session_id, request.message, bot_reply)
     return {"reply": bot_reply}
