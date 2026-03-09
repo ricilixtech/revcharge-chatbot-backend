@@ -1,242 +1,314 @@
 🏢 COMPANY INFORMATION
-1. What is Revcharge?
 
+1. What is Revcharge?
 Revcharge is an Australian company that supplies and professionally installs EV chargers for homes and businesses across Australia.
 
 2. Where does Revcharge operate?
-
 Revcharge operates Australia-wide.
 
 3. How many customers has Revcharge served?
-
-Revcharge has served over 8,500 Australian customers.
+Revcharge has served more than 8,500 Australian customers.
 
 4. What services does Revcharge provide?
-
-Revcharge supplies EV chargers, installs them via licensed electricians, offers solar integration options, and provides ongoing support.
+Revcharge supplies EV chargers, installs them through licensed electricians, offers solar integration options, and provides ongoing support.
 
 5. How can I get a quote?
-
-You can request a quote by completing the online survey. A fixed-price quote is provided within 1 business day.
+You can request a quote by completing the online survey.
+A fixed-price quote is provided within one business day.
 
 💰 PRICING & PAYMENT
-6. How much does a fully installed EV charger cost?
 
+6. How much does a fully installed EV charger cost?
 Fully installed EV charger packages start from $1,455.
 
 7. How much does an EV charger cost without installation?
-
-EV chargers only (no installation) start from $720.
+EV chargers without installation start from $720.
 
 8. Can I get installation only if I already have a charger?
-
-Yes. Revcharge offers installation-only services if you supply your own charger.
+Yes. Revcharge offers installation-only services if you already have your own charger.
 
 9. Is Revcharge pricing fixed?
-
 Yes. All pricing is fixed with no hidden or call-out fees.
 
 10. When do I need to pay?
-
-Full payment is required before installation begins.
+Full payment must be completed before installation begins.
 
 11. Can I pay after installation?
-
-No. Payment must be made upfront before installation.
+No. Payment must be completed before installation starts.
 
 12. Does Revcharge offer installment plans?
-
 No. Only one-time upfront payment is available.
 
+13. How long is the quote valid?
+Quotes remain valid for 7 days.
+
 🔧 INSTALLATION PROCESS
-13. How does the Revcharge process work?
+
+14. How does the Revcharge process work?
 
 The process includes:
 
-Online survey
+Completing an online survey
 
-Fixed-price quote within 1 business day
+Receiving a fixed-price quote within one business day
 
-Professional installation
+Professional installation by a licensed electrician
 
-Ongoing warranty and support
+Ongoing support
 
-14. Who installs the chargers?
+15. Who installs the chargers?
+Chargers are installed by licensed and certified electricians from Revcharge’s Australia-wide network.
 
-Licensed and certified local electricians from Revcharge’s Australia-wide network.
+16. How long does installation take?
+Standard installations usually take 2–4 hours.
+Additional time may be required for electrical upgrades.
 
-15. How long does installation take?
+17. When will installation be scheduled?
+Installation is typically scheduled within 5 working days after confirmation.
 
-Standard installations take 2–4 hours. Additional time may be required for electrical upgrades.
+18. Where is the charger delivered?
+The charger is delivered directly to the customer’s address, not to the installer.
 
-16. Where is the charger delivered?
-
-The charger is delivered directly to your home, not to the installer.
-
-17. Does Revcharge handle permits?
-
+19. Does Revcharge handle permits?
 Yes. Revcharge manages required permits and regulatory compliance.
 
-18. Can chargers be installed outdoors?
-
+20. Can chargers be installed outdoors?
 Yes. Chargers are weatherproof and suitable for outdoor installation.
 
-19. Can EV chargers be installed in apartments?
+21. Can EV chargers be installed in apartments?
+Yes. Body corporate or property management approval may be required.
+Revcharge assists with the assessment.
 
-Yes. Body corporate or property management approval may be required. Revcharge assists with assessment.
+22. What is the best location for installation?
+The best location is near your parking space, close to your vehicle’s charging port and electrical panel.
 
-20. What is the best location for installation?
-
-Near your parking space, close to your vehicle’s charging port and your electrical panel.
-
-21. Can I take my charger if I move house?
-
+23. Can I take my charger if I move house?
 Yes. Most chargers can be professionally uninstalled and reinstalled at a new address.
 
+24. Can someone visit my site before installation?
+Yes. A site visit can be arranged after completing the hybrid survey.
+
+Please complete the survey here:
+https://hybridquote.revcharge.com.au
+
 ⚡ CHARGER TYPES & FEATURES
-22. What is the difference between tethered and untethered chargers?
 
-Tethered: Cable permanently attached.
+25. What is the difference between tethered and untethered chargers?
 
-Untethered: Detachable cable for a cleaner appearance.
+Tethered chargers have a permanently attached cable.
 
-23. What is the difference between smart and basic chargers?
+Untethered chargers use a detachable cable, giving a cleaner appearance.
 
-Smart chargers offer app control, scheduling, energy monitoring, solar integration, and load balancing.
-Basic chargers provide straightforward plug-in charging without app features.
+26. What is the difference between smart and basic chargers?
 
-24. What is single-phase charging?
+Smart chargers include:
 
-Single-phase charging is standard in most Australian homes and adds approximately 30–40 km of range per hour.
+App control
 
-25. What is three-phase charging?
+Charging schedules
 
-Three-phase charging is faster and can add up to 120 km of range per hour. It requires a three-phase property connection.
+Energy monitoring
 
-26. What is a Level 2 charger?
+Solar integration
 
-Level 2 chargers are 5–7 times faster than a standard household power outlet and typically charge a vehicle fully in 4–8 hours.
+Load balancing
+
+Basic chargers provide simple plug-in charging without smart features.
+
+27. What is single-phase charging?
+
+Single-phase charging is standard in most Australian homes and adds approximately 30–40 km of driving range per hour.
+
+28. What is three-phase charging?
+
+Three-phase charging is faster and can add up to 120 km of range per hour.
+It requires a three-phase electrical connection.
+
+29. What is a Level 2 charger?
+
+Level 2 chargers are 5–7 times faster than a standard household outlet and typically charge a vehicle fully in 4–8 hours.
+
+30. Which charger should I choose?
+
+The best charger depends on your:
+
+Vehicle
+
+Electrical connection
+
+Solar system
+
+Charging needs
+
+Revcharge checks charger specifications in the inventory database and provides a suitable recommendation.
 
 ☀️ SOLAR & ENERGY INTEGRATION
-27. Can EV chargers work with solar panels?
 
-Yes. Revcharge offers dedicated solar integration options.
+31. Will the charger work with solar?
 
-28. Can chargers integrate with batteries and grid power?
+Yes. Revcharge offers EV chargers that can integrate with solar systems depending on the charger variant.
 
-Yes. Chargers can integrate with solar panels, home batteries, and grid power.
+32. Will a specific charger work with my solar inverter?
 
-29. What is bidirectional charging?
+Revcharge checks both the charger model and inverter compatibility in the inventory database before confirming compatibility.
 
-Bidirectional chargers allow:
+33. Can chargers integrate with batteries or grid power?
 
-V2H (Vehicle-to-Home): Power your home from your car
+Yes. Chargers can integrate with:
 
-V2G (Vehicle-to-Grid): Sell power back to the grid
+Solar panels
 
-30. How does Revcharge check charger compatibility with solar inverters?
+Home batteries
 
-Revcharge checks both products in inventory, runs a compatibility comparison, and provides results to the customer.
+Grid electricity
+
+34. What is bidirectional charging?
+
+Bidirectional charging allows electricity to flow both ways.
+
+V2H (Vehicle-to-Home) – your EV can power your home.
+V2G (Vehicle-to-Grid) – your EV can send electricity back to the grid.
 
 🔌 CHARGING & USAGE
-31. How fast is home charging compared to a standard power outlet?
 
-A standard outlet (~2.4kW) may take 24+ hours.
-A Level 2 single-phase charger (~7kW) takes around 4–8 hours.
-A Level 2 three-phase charger (~22kW) takes around 1–2 hours.
+35. How fast is home charging?
 
-32. How much does it cost to charge an EV at home?
+A standard outlet may take 24+ hours.
 
-Typically $10–$20 per full charge, depending on electricity rates.
+A 7kW Level 2 charger typically charges a vehicle in 4–8 hours.
 
-33. How often do EV owners charge?
+A 22kW three-phase charger may charge in about 1–2 hours.
 
-Most EV owners charge 2–4 times per week. Daily commuters often charge overnight.
+36. How much does it cost to charge an EV at home?
 
-34. Is overnight charging safe?
+A full charge typically costs $10–$20 depending on electricity rates.
 
-Yes. Chargers include temperature monitoring and automatic shutoff for safety.
+37. How often do EV owners charge?
 
-35. What happens during a power outage?
+Most EV owners charge 2–4 times per week, often overnight.
+
+38. Is overnight charging safe?
+
+Yes. Chargers include safety features such as:
+
+Temperature monitoring
+
+Automatic shut-off
+
+39. What happens during a power outage?
 
 Charging stops safely and automatically resumes when power returns.
 
-36. Will charging overload my home?
+40. Will charging overload my home?
 
-Smart chargers use load management to balance electricity usage and prevent overload.
+Smart chargers include load management to balance electricity usage and prevent overload.
 
 🛠 WARRANTY & SUPPORT
-37. What warranty is included?
 
-All chargers include a minimum 2-year manufacturer warranty plus an installation warranty.
+41. What warranty is included with the charger?
 
-38. Does Revcharge provide support after installation?
+All chargers include a minimum 2-year manufacturer warranty.
 
-Yes. Ongoing troubleshooting support is available.
+42. Is installation covered under warranty?
 
-39. Is maintenance required?
+Revcharge provides post-installation support, but there is no formal installation warranty.
 
-Minimal maintenance is required. Routine inspections and keeping the unit clean are recommended.
+43. Do you provide support after installation?
+
+Yes. Revcharge provides ongoing troubleshooting and support.
+
+44. Does the charger require maintenance?
+
+Very little maintenance is required.
+Periodic inspection and keeping the charger clean is recommended.
 
 🏢 COMMERCIAL INSTALLATIONS
-40. Does Revcharge install multiple chargers at one location?
 
-Yes.
+45. Can multiple chargers be installed at one location?
 
-41. What types of commercial properties are supported?
+Yes. Revcharge installs multiple chargers for commercial sites.
 
-Offices, retail shops, hotels, apartment buildings, and parking lots.
+46. What types of commercial properties are supported?
 
-42. Are dedicated commercial solutions available?
+Supported properties include:
 
-Yes. Revcharge offers tailored commercial charging solutions.
+Offices
+
+Retail stores
+
+Hotels
+
+Apartment buildings
+
+Parking facilities
+
+47. Do you offer commercial EV charging solutions?
+
+Yes. Revcharge provides tailored commercial EV charging solutions.
 
 🎁 REBATES & PROPERTY VALUE
-43. Are government rebates available?
+
+48. Are government rebates available?
 
 Rebates and incentives are available in many Australian regions.
 
-44. Does Revcharge help with rebate applications?
+49. Does Revcharge help with rebate applications?
 
-Yes. Revcharge guides customers through eligibility checks and rebate applications.
+Yes. Revcharge helps customers check eligibility and apply for rebates.
 
-45. Does installing an EV charger increase property value?
+50. Does installing an EV charger increase property value?
 
-Yes. EV chargers are increasingly considered a property value-add.
+Yes. EV chargers are increasingly considered a property value improvement.
+
+🎉 PROMOTIONS
+
+51. Are there any promotions or discounts?
+
+There are currently no active promotions or discounts.
+
+(Only mention promotions if a promotion is active.)
+
+🔋 TESLA CHARGER FEATURES
+
+52. Can Tesla Gen 3 schedule charging through the app?
+
+Yes. Tesla Gen 3 chargers allow charging schedules through the Tesla mobile app.
+
+53. Can I monitor energy consumption in the Tesla app?
+
+Yes. Tesla Gen 3 chargers allow monitoring of energy usage in the Tesla mobile app.
+
+👨‍💻 HUMAN SUPPORT
+
+54. Can I speak with a human support agent?
+
+Yes. I can transfer you to a human support agent for further assistance.
 
 🔗 IMPORTANT LINKS
-46. Where is the main website?
 
+Main Website
 https://www.revcharge.com.au
 
-47. Where can I get a standard quote?
-
+Standard Quote
 https://www.revcharge.com.au/get-a-quote
 
-48. Where can I get a solar or hybrid quote?
-
+Solar / Hybrid Quote
 https://hybridquote.revcharge.com.au
 
-49. Where can I view available chargers?
-
+EV Chargers Page
 https://www.revcharge.com.au/ev-chargers
 
-50. Where can I see pricing details?
-
+Pricing Page
 https://www.revcharge.com.au/pricing
 
-51. How can I contact Revcharge?
-
+Contact Page
 https://www.revcharge.com.au/contact
 
-52. Where can I check car brand compatibility?
-
+Vehicle Compatibility
 https://www.revcharge.com.au/car-brands
 
-53. Where can I learn about bidirectional charging?
-
+Bidirectional Charging Info
 https://www.revcharge.com.au/vehicle-to-grid
 
-54. How can electricians partner with Revcharge?
-
+Installer Partner Program
 https://www.revcharge.com.au/installer-partner-program
